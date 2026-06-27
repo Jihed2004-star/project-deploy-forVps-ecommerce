@@ -17,7 +17,7 @@ services:
 
   mongo-service:
     container_name: mongoo
-    image: mongo
+    image: mongo:4.4
     ports:
       - 27017:27017
     environment:
@@ -27,6 +27,7 @@ services:
       - papa:/data/db
     networks:
       - network-1
+    command: mongod --wiredTigerCacheSizeGB 0.25
 
 
   mongo-express:

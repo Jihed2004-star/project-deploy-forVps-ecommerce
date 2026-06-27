@@ -7,3 +7,9 @@ services:
         VITE_API_URL: http://express-service:3000
     ports:
       - 80:80
+    networks:
+      - network-1
+
+networks:
+  network-1:
+   driver: bridge
