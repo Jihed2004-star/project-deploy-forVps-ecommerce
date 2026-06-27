@@ -15,12 +15,7 @@ Deployment configuration for the ecommerce fullstack application.
 - Docker
 - Docker Compose
 
-### Run
-```bash
-git clone https://github.com/Jihed2004-star/ecommerce-deploy.git
-cd ecommerce-deploy
-docker compose up -d
-```
+
 
 ## Services
 | Service | Port | Description |
