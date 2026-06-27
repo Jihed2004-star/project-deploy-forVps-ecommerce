@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  express-service:
+    depends_on:
+      - mongo-service
+    container_name: expresso
+    image: jihed2004/api-ecommerce
+    ports: 
+      - 3000:3000
+    environment:
+      - MONGODB_URI=mongodb://mongo-service:27017/
+      - MONGODB_DB=ecommerce
+    networks:
+      - network-1
+
+
+  mongo-service:
+    container_name: mongoo
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 
+      MONGO_INITDB_ROOT_PASSWORD: 
+    volumes:
+      - papa:/data/db
+    networks:
+      - network-1
+
+
+  mongo-express:
+    depends_on: 
+      - mongo-service
+    container_name: expressmongo
+    image: mongo-express
+    ports:
+     - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo-service:27017/
+      ME_CONFIG_BASICAUTH_ENABLED: true
+      ME_CONFIG_BASICAUTH_USERNAME: user
+      ME_CONFIG_BASICAUTH_PASSWORD: pass
+    networks:
+      - network-1
+    
+
+
+
+volumes:
+  papa:
+networks:
+  network-1:
+   driver: bridge

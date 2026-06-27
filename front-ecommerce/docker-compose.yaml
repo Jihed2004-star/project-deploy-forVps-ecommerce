@@ -1,0 +1,6 @@
+version: '3'
+services:
+  front-service:
+    image: jihed2004/front-ecommerce
+    ports:
+      - 80:80
