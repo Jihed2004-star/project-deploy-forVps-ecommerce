@@ -2,9 +2,6 @@ version: '3'
 services:
   front-service:
     image: jihed2004/front-ecommerce
-    build: 
-      args:
-        VITE_API_URL: http://express-service:3000
     ports:
       - 80:80
     networks:
